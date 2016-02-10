@@ -7,8 +7,7 @@
 		is: 'cosmoz-theme-switcher',
 		properties: {
 			theme: {
-				type: String,
-				value: 'dark-side'
+				type: String
 			},
 			themeDirectory: {
 				type: String,
@@ -41,13 +40,15 @@
 		},
 
 		themeError: function (event) {
-			console.log('themeError', event);
-			this.fire('theme-error');
+			this.fire('theme-error', {
+				theme: this.theme
+			});
 		},
 
 		themeLoaded: function (event) {
-			console.log('themeLoaded', event);
-			this.fire('theme-loaded');
+			this.fire('theme-loaded', {
+				theme: this.theme
+			});
 		}
 	});
 }());

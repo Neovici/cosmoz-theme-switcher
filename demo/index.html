@@ -21,9 +21,10 @@
 	<div id="page">
 		<h3>Cosmoz Theme Switcher</h3>
 		<template is="dom-bind" id="t">
-			<cosmoz-theme-switcher theme="{{theme}}"></cosmoz-theme-switcher>
+			<cosmoz-theme-switcher theme="{{theme}}" on-theme-loaded="onThemeLoaded" on-theme-error="onThemeError"></cosmoz-theme-switcher>
 			<paper-dropdown-menu label="Dinosaurs" value="{{theme}}">
 				<paper-listbox class="dropdown-content">
+					<paper-item>ERROR THEME</paper-item>
 					<paper-item>candy</paper-item>
 					<paper-item>citric-flames</paper-item>
 					<paper-item>classical</paper-item>
@@ -42,6 +43,26 @@
 				</paper-listbox>
 			</paper-dropdown-menu>
 		</template>
+		<div id="results"></div>
 	</div>
+	<script type="text/javascript">
+/*global document, moment, window, Cosmoz */
+(function () {
+	"use strict";
+	var t = document.getElementById('t'),
+		results = document.getElementById('results');
+	function addResult(res) {
+		var span = document.createElement('div');
+		span.innerText = res;
+		results.appendChild(span);
+	}
+	t.onThemeError = function (event, detail) {
+		addResult('theme error: ' + detail.theme);
+	};
+	t.onThemeLoaded = function (event, detail) {
+		addResult('theme loaded: ' + detail.theme);
+	};
+}());
+	</script>
 </body>
 </html>
