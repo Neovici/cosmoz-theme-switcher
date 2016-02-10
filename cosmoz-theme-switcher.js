@@ -11,15 +11,18 @@
 			},
 			themeDirectory: {
 				type: String,
-				value: '../bower_components/polymer-themes'
+				value: 'themes'
 			},
 			_importElement: {
-				type: Object,
-				computed: '_computeImportElement(themeDirectory, theme)'
+				type: Object
 			}
 		},
 
-		_computeImportElement: function (directory, theme) {
+		observers: [
+			'_createImportElement(themeDirectory, theme)'
+		],
+
+		_createImportElement: function (directory, theme) {
 			if (!theme || theme.length === 0) {
 				return;
 			}
@@ -27,27 +30,32 @@
 				href = directory + '/' + theme + '.html',
 				importElement = doc.createElement('link');
 
-			importElement.setAttribute('rel', 'import');
 			importElement.setAttribute('async', '');
-			importElement.addEventListener('load', this.themeLoaded.bind(this));
-			importElement.addEventListener('error', this.themeError.bind(this));
 			importElement.setAttribute('href', href);
-			if (this._importElement) {
-				this._importElement.parentNode.removeChild(this._importElement);
-			}
+			importElement.setAttribute('rel', 'import');
+
+			importElement.addEventListener('load', this.themeLoaded.bind(this, this._importElement, importElement, theme));
+			importElement.addEventListener('error', this.themeError.bind(this, this._importElement, importElement, theme));
+
 			doc.head.appendChild(importElement);
-			return importElement;
 		},
 
-		themeError: function (event) {
+		themeError: function (oldImport, newImport, theme, event) {
+			if (newImport) {
+				newImport.parentNode.removeChild(newImport);
+			}
 			this.fire('theme-error', {
-				theme: this.theme
+				theme: theme
 			});
 		},
 
-		themeLoaded: function (event) {
+		themeLoaded: function (oldImport, newImport, theme, event) {
+			if (oldImport) {
+				oldImport.parentNode.removeChild(oldImport);
+			}
+			this._importElement = newImport;
 			this.fire('theme-loaded', {
-				theme: this.theme
+				theme: theme
 			});
 		}
 	});

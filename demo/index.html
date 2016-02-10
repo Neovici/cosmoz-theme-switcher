@@ -21,9 +21,9 @@
 	<div id="page">
 		<h3>Cosmoz Theme Switcher</h3>
 		<template is="dom-bind" id="t">
-			<cosmoz-theme-switcher theme="{{theme}}" on-theme-loaded="onThemeLoaded" on-theme-error="onThemeError"></cosmoz-theme-switcher>
-			<paper-dropdown-menu label="Dinosaurs" value="{{theme}}">
-				<paper-listbox class="dropdown-content">
+			<cosmoz-theme-switcher theme-directory="../bower_components/polymer-themes" theme="{{ getThemeName(themeitem) }}" on-theme-loaded="onThemeLoaded" on-theme-error="onThemeError"></cosmoz-theme-switcher>
+			<paper-dropdown-menu label="Themes">
+				<paper-listbox class="dropdown-content" selected="2" selected-item="{{ themeitem }}">
 					<paper-item>ERROR THEME</paper-item>
 					<paper-item>candy</paper-item>
 					<paper-item>citric-flames</paper-item>
@@ -50,15 +50,24 @@
 (function () {
 	"use strict";
 	var t = document.getElementById('t'),
-		results = document.getElementById('results');
-	function addResult(res) {
-		var span = document.createElement('div');
-		span.innerText = res;
-		results.appendChild(span);
-	}
+		results = document.getElementById('results'),
+		addResult = function (res) {
+			var span = document.createElement('div');
+			span.innerText = res;
+			results.appendChild(span);
+		};
+
+	t.getThemeName = function (themeitem) {
+		if (!themeitem) {
+			return;
+		}
+		return themeitem.textContent.trim();
+	};
+
 	t.onThemeError = function (event, detail) {
 		addResult('theme error: ' + detail.theme);
 	};
+
 	t.onThemeLoaded = function (event, detail) {
 		addResult('theme loaded: ' + detail.theme);
 	};
