@@ -4,39 +4,44 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>NVD3 PIE</title>
+	<title>Cosmoz Theme Switcher</title>
 
 	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="../nvd3-pie.html">
+	<link rel="import" href="../cosmoz-theme-switcher.html">
+	<link rel="import" href="../../paper-item/paper-item.html">
+	<link rel="import" href="../../paper-listbox/paper-listbox.html">
+	<link rel="import" href="../../paper-dropdown-menu/paper-dropdown-menu.html">
+	<style>
+		#page {
+			padding: 20px;
+		}
+	</style>
 </head>
 <body>
-	<template is="dom-bind" id="t">
-		<nvd3-pie id="pie1" donut x-prop="name" y-prop="amount" pie-title="Suppliers" on-slice-selected="itemSelected" data="{{ data }}"></nvd3-pie>
-	</template>
-	<script type="text/javascript">
-/*global document, window */
-(function () {
-	"use strict";
-	window.addEventListener('WebComponentsReady', function () {
-		var
-			pieDataJson = '[{"items":[{"registered":"2015-01-30","id":0},{"registered":"2015-03-06","id":1},{"registered":"2014-02-18","id":2}],"amount":3775,"name":"KENEGY"},{"items":[{"registered":"2015-01-30","id":0},{"registered":"2015-03-06","id":1},{"registered":"2014-02-18","id":2}],"amount":6479,"name":"FILODYNE"},{"items":[{"registered":"2015-01-30","id":0},{"registered":"2015-03-06","id":1},{"registered":"2014-02-18","id":2}],"amount":3523,"name":"PIVITOL"},{"items":[{"registered":"2015-01-30","id":0},{"registered":"2015-03-06","id":1},{"registered":"2014-02-18","id":2}],"amount":6182,"name":"GENEKOM"},{"items":[{"registered":"2015-01-30","id":0},{"registered":"2015-03-06","id":1},{"registered":"2014-02-18","id":2}],"amount":1233,"name":"COFINE"}]',
-			t = document.getElementById('t');
-
-		t.data = JSON.parse(pieDataJson);
-		t.itemSelected = function (e, d, s) {
-			if (!d.dataMassaged) {
-				d.items.forEach(function (diff, index) {
-					diff.registered = {
-						date: new Date(diff.registered),
-						format: 'date'
-					};
-				});
-				d.dataMassaged = true;
-			}
-			this.$.pie1.refresh();
-		};
-	});
-}());
-	</script>
+	<div id="page">
+		<h3>Cosmoz Theme Switcher</h3>
+		<template is="dom-bind" id="t">
+			<cosmoz-theme-switcher theme="{{theme}}"></cosmoz-theme-switcher>
+			<paper-dropdown-menu label="Dinosaurs" value="{{theme}}">
+				<paper-listbox class="dropdown-content">
+					<paper-item>candy</paper-item>
+					<paper-item>citric-flames</paper-item>
+					<paper-item>classical</paper-item>
+					<paper-item>dark-side</paper-item>
+					<paper-item>denim</paper-item>
+					<paper-item>everest</paper-item>
+					<paper-item>gelati</paper-item>
+					<paper-item>golden-goose</paper-item>
+					<paper-item>ice</paper-item>
+					<paper-item>la-resistance</paper-item>
+					<paper-item>melon</paper-item>
+					<paper-item>seven-seas</paper-item>
+					<paper-item>sky</paper-item>
+					<paper-item>technology</paper-item>
+					<paper-item>the-times</paper-item>
+				</paper-listbox>
+			</paper-dropdown-menu>
+		</template>
+	</div>
 </body>
 </html>
