@@ -8,6 +8,7 @@
 
 	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 	<link rel="import" href="../cosmoz-theme-switcher.html">
+	<link rel="import" href="../../paper-button/paper-button.html">
 	<link rel="import" href="../../paper-item/paper-item.html">
 	<link rel="import" href="../../paper-listbox/paper-listbox.html">
 	<link rel="import" href="../../paper-dropdown-menu/paper-dropdown-menu.html">
@@ -21,30 +22,48 @@
 	<div id="page">
 		<h3>Cosmoz Theme Switcher</h3>
 		<template is="dom-bind" id="t">
-			<cosmoz-theme-switcher theme-directory="../bower_components/polymer-themes" theme="{{ getThemeName(themeitem) }}" on-theme-loaded="onThemeLoaded" on-theme-error="onThemeError"></cosmoz-theme-switcher>
+			<cosmoz-theme-switcher theme-directory="../bower_components/polymer-themes" theme="{{ theme }}" on-theme-loaded="onThemeLoaded" on-theme-error="onThemeError"></cosmoz-theme-switcher>
 			<paper-dropdown-menu label="Themes">
-				<paper-listbox class="dropdown-content" selected="2" selected-item="{{ themeitem }}">
-					<paper-item>ERROR THEME</paper-item>
-					<paper-item>candy</paper-item>
-					<paper-item>citric-flames</paper-item>
-					<paper-item>classical</paper-item>
-					<paper-item>dark-side</paper-item>
-					<paper-item>denim</paper-item>
-					<paper-item>everest</paper-item>
-					<paper-item>gelati</paper-item>
-					<paper-item>golden-goose</paper-item>
-					<paper-item>ice</paper-item>
-					<paper-item>la-resistance</paper-item>
-					<paper-item>melon</paper-item>
-					<paper-item>seven-seas</paper-item>
-					<paper-item>sky</paper-item>
-					<paper-item>technology</paper-item>
-					<paper-item>the-times</paper-item>
+				<paper-listbox class="dropdown-content" attr-for-selected="id" selected="{{ theme }}">
+					<paper-item id="ERROR THEME">ERROR THEME</paper-item>
+					<paper-item id="candy">candy</paper-item>
+					<paper-item id="citric-flames">citric-flames</paper-item>
+					<paper-item id="classical">classical</paper-item>
+					<paper-item id="dark-side">dark-side</paper-item>
+					<paper-item id="denim">denim</paper-item>
+					<paper-item id="everest">everest</paper-item>
+					<paper-item id="gelati">gelati</paper-item>
+					<paper-item id="golden-goose">golden-goose</paper-item>
+					<paper-item id="ice">ice</paper-item>
+					<paper-item id="la-resistance">la-resistance</paper-item>
+					<paper-item id="melon">melon</paper-item>
+					<paper-item id="seven-seas">seven-seas</paper-item>
+					<paper-item id="sky">sky</paper-item>
+					<paper-item id="technology">technology</paper-item>
+					<paper-item id="the-times">the-times</paper-item>
 				</paper-listbox>
 			</paper-dropdown-menu>
+			<paper-button>regular paper-button</paper-button>
+			<x-foo></x-foo>
 		</template>
 		<div id="results"></div>
 	</div>
+	<dom-module id="x-foo">
+		<template>
+			<paper-button>paper-button in x-foo local dom</paper-button>
+		</template>
+		<script type="text/javascript">
+/*global Polymer, document */
+(function () {
+
+	"use strict";
+
+	Polymer({
+		is: 'x-foo'
+	});
+}());
+		</script>
+	</dom-module>
 	<script type="text/javascript">
 /*global document, moment, window, Cosmoz */
 (function () {
@@ -57,13 +76,6 @@
 			results.appendChild(span);
 		};
 
-	t.getThemeName = function (themeitem) {
-		if (!themeitem) {
-			return;
-		}
-		return themeitem.textContent.trim();
-	};
-
 	t.onThemeError = function (event, detail) {
 		addResult('theme error: ' + detail.theme);
 	};
@@ -71,6 +83,8 @@
 	t.onThemeLoaded = function (event, detail) {
 		addResult('theme loaded: ' + detail.theme);
 	};
+
+	t.theme = 'candy';
 }());
 	</script>
 </body>
