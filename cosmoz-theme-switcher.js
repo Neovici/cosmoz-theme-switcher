@@ -57,6 +57,7 @@
 			this.fire('theme-loaded', {
 				theme: theme
 			});
+			Polymer.updateStyles();
 		}
 	});
 }());
