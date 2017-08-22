@@ -1,7 +1,7 @@
 /*global Polymer, document */
 (function () {
 
-	"use strict";
+	'use strict';
 
 	Polymer({
 		is: 'cosmoz-theme-switcher',
