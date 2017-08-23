@@ -48,44 +48,43 @@
 		</template>
 		<div id="results"></div>
 	</div>
+
 	<dom-module id="x-foo">
 		<template>
 			<paper-button>paper-button in x-foo local dom</paper-button>
 		</template>
 		<script type="text/javascript">
-/*global Polymer, document */
-(function () {
+			(function () {
+				'use strict';
 
-	"use strict";
-
-	Polymer({
-		is: 'x-foo'
-	});
-}());
+				Polymer({
+					is: 'x-foo'
+				});
+			}());
 		</script>
 	</dom-module>
+
 	<script type="text/javascript">
-/*global document, moment, window, Cosmoz */
-(function () {
-	"use strict";
-	var t = document.getElementById('t'),
-		results = document.getElementById('results'),
-		addResult = function (res) {
-			var span = document.createElement('div');
-			span.innerText = res;
-			results.appendChild(span);
-		};
+		(function () {
+			'use strict';
+			var t = document.getElementById('t'),
+				results = document.getElementById('results'),
+				addResult = function (res) {
+					var span = document.createElement('div');
+					span.innerText = res;
+					results.appendChild(span);
+				};
 
-	t.onThemeError = function (event, detail) {
-		addResult('theme error: ' + detail.theme);
-	};
+			t.onThemeError = function (event, detail) {
+				addResult('theme error: ' + detail.theme);
+			};
 
-	t.onThemeLoaded = function (event, detail) {
-		addResult('theme loaded: ' + detail.theme);
-	};
+			t.onThemeLoaded = function (event, detail) {
+				addResult('theme loaded: ' + detail.theme);
+			};
 
-	t.theme = 'candy';
-}());
+			t.theme = 'candy';
+		}());
 	</script>
 </body>
 </html>
