@@ -1,6 +1,7 @@
 (function () {
 	'use strict';
 
+	/*eslint no-unused-vars: ["warn", { "argsIgnorePattern": "event" }]*/
 	Polymer({
 		is: 'cosmoz-theme-switcher',
 		properties: {
