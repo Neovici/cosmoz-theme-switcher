@@ -1,6 +1,4 @@
-/*global Polymer, document */
 (function () {
-
 	'use strict';
 
 	Polymer({
