@@ -4,70 +4,67 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Cosmoz Theme Switcher</title>
+	<title>cosmoz-theme-switcher Demo</title>
 
 	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="../cosmoz-theme-switcher.html">
+
+	<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html" />
+	<link rel="import" href="../../iron-demo-helpers/demo-snippet.html" />
+
 	<link rel="import" href="../../paper-button/paper-button.html">
 	<link rel="import" href="../../paper-item/paper-item.html">
 	<link rel="import" href="../../paper-listbox/paper-listbox.html">
 	<link rel="import" href="../../paper-dropdown-menu/paper-dropdown-menu.html">
-	<style>
-		#page {
-			padding: 20px;
-		}
-	</style>
+	<link rel="import" href="../../neon-animation/web-animations.html">
+
+	<link rel="import" href="../cosmoz-theme-switcher.html">
+	<link rel="import" href="./helpers/x-foo.html">
+
+	<custom-style>
+		<style is="custom-style">
+			#page {
+				padding: 20px;
+			}
+		</style>
+	</custom-style>
 </head>
-<body>
+<body unresolved>
 	<div id="page">
 		<h3>Cosmoz Theme Switcher</h3>
-		<template is="dom-bind" id="t">
-			<cosmoz-theme-switcher theme-directory="../bower_components/polymer-themes" theme="{{ theme }}" on-theme-loaded="onThemeLoaded" on-theme-error="onThemeError"></cosmoz-theme-switcher>
-			<paper-dropdown-menu label="Themes">
-				<paper-listbox class="dropdown-content" attr-for-selected="id" selected="{{ theme }}">
-					<paper-item id="ERROR THEME">ERROR THEME</paper-item>
-					<paper-item id="candy">candy</paper-item>
-					<paper-item id="citric-flames">citric-flames</paper-item>
-					<paper-item id="classical">classical</paper-item>
-					<paper-item id="dark-side">dark-side</paper-item>
-					<paper-item id="denim">denim</paper-item>
-					<paper-item id="everest">everest</paper-item>
-					<paper-item id="gelati">gelati</paper-item>
-					<paper-item id="golden-goose">golden-goose</paper-item>
-					<paper-item id="ice">ice</paper-item>
-					<paper-item id="la-resistance">la-resistance</paper-item>
-					<paper-item id="melon">melon</paper-item>
-					<paper-item id="seven-seas">seven-seas</paper-item>
-					<paper-item id="sky">sky</paper-item>
-					<paper-item id="technology">technology</paper-item>
-					<paper-item id="the-times">the-times</paper-item>
-				</paper-listbox>
-			</paper-dropdown-menu>
-			<paper-button>regular paper-button</paper-button>
-			<x-foo></x-foo>
-		</template>
+		<dom-bind id="basic">
+			<template is="dom-bind">
+				<cosmoz-theme-switcher theme-directory="../bower_components/polymer-themes" theme="{{ theme }}" on-theme-loaded="onThemeLoaded" on-theme-error="onThemeError"></cosmoz-theme-switcher>
+				<paper-dropdown-menu label="Themes">
+					<paper-listbox slot="dropdown-content" class="dropdown-content" attr-for-selected="id" selected="{{ theme }}">
+						<paper-item id="ERROR THEME">ERROR THEME</paper-item>
+						<paper-item id="candy">candy</paper-item>
+						<paper-item id="citric-flames">citric-flames</paper-item>
+						<paper-item id="classical">classical</paper-item>
+						<paper-item id="dark-side">dark-side</paper-item>
+						<paper-item id="denim">denim</paper-item>
+						<paper-item id="everest">everest</paper-item>
+						<paper-item id="gelati">gelati</paper-item>
+						<paper-item id="golden-goose">golden-goose</paper-item>
+						<paper-item id="ice">ice</paper-item>
+						<paper-item id="la-resistance">la-resistance</paper-item>
+						<paper-item id="melon">melon</paper-item>
+						<paper-item id="seven-seas">seven-seas</paper-item>
+						<paper-item id="sky">sky</paper-item>
+						<paper-item id="technology">technology</paper-item>
+						<paper-item id="the-times">the-times</paper-item>
+					</paper-listbox>
+				</paper-dropdown-menu>
+				<paper-button>regular paper-button</paper-button>
+				<x-foo></x-foo>
+			</template>
+		</dom-bind>
 		<div id="results"></div>
 	</div>
 
-	<dom-module id="x-foo">
-		<template>
-			<paper-button>paper-button in x-foo local dom</paper-button>
-		</template>
-		<script type="text/javascript">
-			(function () {
-				'use strict';
-
-				Polymer({
-					is: 'x-foo'
-				});
-			}());
-		</script>
-	</dom-module>
-
 	<script type="text/javascript">
-		(function () {
-			'use strict';
-			var t = document.getElementById('t'),
+	(function () {
+		window.addEventListener('WebComponentsReady', function () {
+			var basic = document.getElementById('basic'),
 				results = document.getElementById('results'),
 				addResult = function (res) {
 					var span = document.createElement('div');
@@ -75,16 +72,19 @@
 					results.appendChild(span);
 				};
 
-			t.onThemeError = function (event, detail) {
+			basic = !basic.set ? basic.firstElementChild : basic;
+
+			basic.onThemeError = function (event, detail) {
 				addResult('theme error: ' + detail.theme);
 			};
 
-			t.onThemeLoaded = function (event, detail) {
+			basic.onThemeLoaded = function (event, detail) {
 				addResult('theme loaded: ' + detail.theme);
 			};
 
-			t.theme = 'candy';
-		}());
+			basic.theme = 'candy';
+		});
+	})();
 	</script>
 </body>
 </html>
