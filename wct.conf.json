@@ -8,7 +8,7 @@
 			"reporters": ["text-summary", "lcov"],
 			"include": [
 				"cosmoz-theme-switcher.html",
-				"cosmoz-theme-switcher.js",
+				"cosmoz-theme-switcher.js"
 			],
 			"exclude": []
 		}
