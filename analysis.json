@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`<cosmoz-theme-switcher>` is a custom style theme manager\n\n### Usage\n\n    <cosmoz-theme-switcher></cosmoz-theme-switcher>\n\neslint no-unused-vars: [\"warn\", { \"argsIgnorePattern\": \"event\" }]",
+      "description": "`<cosmoz-theme-switcher>` is a custom style theme manager\n\n### Usage\n\n    <cosmoz-theme-switcher></cosmoz-theme-switcher>",
       "summary": "",
       "path": "cosmoz-theme-switcher.js",
       "properties": [
@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 7,
+              "line": 6,
               "column": 3
             },
             "end": {
-              "line": 9,
+              "line": 8,
               "column": 4
             }
           },
@@ -32,11 +32,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 10,
+              "line": 9,
               "column": 3
             },
             "end": {
-              "line": 13,
+              "line": 12,
               "column": 4
             }
           },
@@ -52,11 +52,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 14,
+              "line": 13,
               "column": 3
             },
             "end": {
-              "line": 16,
+              "line": 15,
               "column": 4
             }
           },
@@ -72,11 +72,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 23,
+              "line": 22,
               "column": 2
             },
             "end": {
-              "line": 39,
+              "line": 38,
               "column": 3
             }
           },
@@ -96,11 +96,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 41,
+              "line": 40,
               "column": 2
             },
             "end": {
-              "line": 48,
+              "line": 47,
               "column": 3
             }
           },
@@ -114,9 +114,6 @@
             },
             {
               "name": "theme"
-            },
-            {
-              "name": "event"
             }
           ]
         },
@@ -126,11 +123,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 50,
+              "line": 49,
               "column": 2
             },
             "end": {
-              "line": 59,
+              "line": 58,
               "column": 3
             }
           },
@@ -144,9 +141,6 @@
             },
             {
               "name": "theme"
-            },
-            {
-              "name": "event"
             }
           ]
         }
@@ -161,11 +155,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 4,
+          "line": 3,
           "column": 9
         },
         "end": {
-          "line": 60,
+          "line": 59,
           "column": 2
         }
       },
@@ -177,11 +171,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 7,
+              "line": 6,
               "column": 3
             },
             "end": {
-              "line": 9,
+              "line": 8,
               "column": 4
             }
           },
@@ -193,11 +187,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 10,
+              "line": 9,
               "column": 3
             },
             "end": {
-              "line": 13,
+              "line": 12,
               "column": 4
             }
           },
