@@ -1,7 +1,6 @@
 (function () {
 	'use strict';
 
-	/*eslint no-unused-vars: ["warn", { "argsIgnorePattern": "event" }]*/
 	Polymer({
 		is: 'cosmoz-theme-switcher',
 		properties: {
@@ -39,7 +38,7 @@
 			doc.head.appendChild(importElement);
 		},
 
-		themeError: function (oldImport, newImport, theme, event) {
+		themeError: function (oldImport, newImport, theme) {
 			if (newImport) {
 				newImport.parentNode.removeChild(newImport);
 			}
@@ -48,7 +47,7 @@
 			});
 		},
 
-		themeLoaded: function (oldImport, newImport, theme, event) {
+		themeLoaded: function (oldImport, newImport, theme) {
 			if (oldImport) {
 				oldImport.parentNode.removeChild(oldImport);
 			}
