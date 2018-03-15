@@ -114,9 +114,6 @@
             },
             {
               "name": "theme"
-            },
-            {
-              "name": "event"
             }
           ]
         },
@@ -144,9 +141,6 @@
             },
             {
               "name": "theme"
-            },
-            {
-              "name": "event"
             }
           ]
         }

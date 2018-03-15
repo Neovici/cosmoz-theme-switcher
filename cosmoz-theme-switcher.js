@@ -1,7 +1,6 @@
 (function () {
 	'use strict';
 
-	/*eslint no-unused-vars: ["warn", { "argsIgnorePattern": "event" }]*/
 	Polymer({
 		is: 'cosmoz-theme-switcher',
 		properties: {
@@ -21,11 +20,11 @@
 			'_createImportElement(themeDirectory, theme)'
 		],
 
-		_createImportElement: function (directory, theme) {
+		_createImportElement(directory, theme) {
 			if (!theme || theme.length === 0) {
 				return;
 			}
-			var doc = this.ownerDocument || document,
+			const doc = this.ownerDocument || document,
 				href = directory + '/' + theme + '.html',
 				importElement = doc.createElement('link');
 
@@ -39,7 +38,7 @@
 			doc.head.appendChild(importElement);
 		},
 
-		themeError: function (oldImport, newImport, theme, event) {
+		themeError(oldImport, newImport, theme) {
 			if (newImport) {
 				newImport.parentNode.removeChild(newImport);
 			}
@@ -48,7 +47,7 @@
 			});
 		},
 
-		themeLoaded: function (oldImport, newImport, theme, event) {
+		themeLoaded(oldImport, newImport, theme) {
 			if (oldImport) {
 				oldImport.parentNode.removeChild(oldImport);
 			}
