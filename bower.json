@@ -1,7 +1,7 @@
 {
 	"name": "cosmoz-theme-switcher",
 	"main": "cosmoz-theme-switcher.html",
-	"version": "0.1.4",
+	"version": "1.0.1",
 	"homepage": "https://github.com/Neovici/cosmoz-theme-switcher",
 	"authors": [
 		"Neovici Development"
