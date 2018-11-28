@@ -25,15 +25,14 @@
 		(function () {
 			'use strict';
 
-			suite('<cosmoz-theme-switcher>', function () {
-				var ts;
+			suite('<cosmoz-theme-switcher>', () => {
+				let ts;
 
-				setup(function () {
-					ts = fixture('basic');
-				});
+				setup(() => ts = fixture('basic'));
 
-				test('instantiates a cosmoz-theme-switcher element', function () {
+				test('instantiates a cosmoz-theme-switcher element', done => {
 					assert.equal(ts.is, 'cosmoz-theme-switcher');
+					done();
 				});
 			});
 		}());
