@@ -63,22 +63,22 @@
 
 	<script type="text/javascript">
 	(function () {
-		window.addEventListener('WebComponentsReady', function () {
-			var basic = document.getElementById('basic'),
+		window.addEventListener('WebComponentsReady', () => {
+			let basic = document.getElementById('basic'),
 				results = document.getElementById('results'),
-				addResult = function (res) {
-					var span = document.createElement('div');
+				addResult = (res) => {
+					const span = document.createElement('div');
 					span.innerText = res;
 					results.appendChild(span);
 				};
 
 			basic = !basic.set ? basic.firstElementChild : basic;
 
-			basic.onThemeError = function (event, detail) {
+			basic.onThemeError = (event, detail) => {
 				addResult('theme error: ' + detail.theme);
 			};
 
-			basic.onThemeLoaded = function (event, detail) {
+			basic.onThemeLoaded = (event, detail) => {
 				addResult('theme loaded: ' + detail.theme);
 			};
 
