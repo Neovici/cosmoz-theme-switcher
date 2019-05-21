@@ -1,17 +1,78 @@
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer-element.html" />
+<link rel="import" href="../shadycss/apply-shim.html">
+<link rel="import" href="../polymer/lib/elements/custom-style.html">
 
-<!--
-`<cosmoz-theme-switcher>` is a custom style theme manager
+<script>
+/**
+ * `<cosmoz-theme-switcher>` is a custom style theme manager
+ * @customElement
+ * @polymer
+ * @demo demo/index.html
+ */
+class CosmozThemeSwitcher extends Polymer.Element {
+	static get is() {
+		return 'cosmoz-theme-switcher';
+	}
 
-### Usage
+	static get template() {
+		return null;
+	}
 
-    <cosmoz-theme-switcher></cosmoz-theme-switcher>
+	static get properties() {
+		return {
+			theme: {
+				type: String
+			},
+			themeDirectory: {
+				type: String,
+				value: 'themes'
+			},
+			href: {
+				type: String,
+				computed: 'computePath(themeDirectory, theme)',
+				observer: 'import'
+			}
+		};
+	}
 
-@element cosmoz-theme-switcher
-@demo demo/index.html
--->
+	constructor() {
+		super();
+		const customStyle = document.createElement('custom-style'),
+			style = document.createElement('style');
+		customStyle.appendChild(style);
+		this._customStyle = customStyle;
+		this._style = style;
+	}
 
-<dom-module id="cosmoz-theme-switcher">
-	<template></template>
-	<script type="text/javascript" src="cosmoz-theme-switcher.js"></script>
-</dom-module>
+	connectedCallback() {
+		super.connectedCallback();
+		document.head.appendChild(this._customStyle);
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback();
+		document.head.removeChild(this._customStyle);
+	}
+
+	computePath(themeDirectory, theme) {
+		if (theme == null || theme === '') {
+			return;
+		}
+
+		return themeDirectory + '/' + theme + '.css';
+	}
+
+	async import(href) {
+		const result = await fetch(href);
+
+		if (!result.ok) {
+			return this._style.innerHTML = '';
+		}
+
+		this._style.innerHTML = await result.text();
+		Polymer.updateStyles();
+	}
+}
+
+customElements.define(CosmozThemeSwitcher.is, CosmozThemeSwitcher);
+</script>
