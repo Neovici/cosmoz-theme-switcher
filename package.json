@@ -11,7 +11,7 @@
 		"eslint-plugin-html": "^3.2.2",
 		"eslint-plugin-mocha": "^4.11.0",
 		"polymer-cli": "^1.8.0",
-		"web-component-tester-istanbul": "Neovici/web-component-tester-istanbul"
+		"wct-istanbul": "^0.14.3"
 	},
 	"scripts": {
 		"start": "polymer serve -o",

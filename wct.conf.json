@@ -17,10 +17,12 @@
 			"dir": "./coverage",
 			"reporters": ["text-summary", "lcov"],
 			"include": [
-				"cosmoz-theme-switcher.html",
-				"cosmoz-theme-switcher.js"
+				"**/*.html"
 			],
-			"exclude": []
+			"exclude": [
+				"/polymer/**/*.html",
+				"/test-fixture/**/*.html"
+			]
 		},
 		"sauce": {
 			"browsers": [{
