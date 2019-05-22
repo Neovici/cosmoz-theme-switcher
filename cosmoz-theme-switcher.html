@@ -66,11 +66,13 @@ class CosmozThemeSwitcher extends Polymer.Element {
 		const result = await fetch(href);
 
 		if (!result.ok) {
+			this.dispatchEvent(new CustomEvent('theme-error', {detail: {theme: this.theme}}));
 			return this._style.innerHTML = '';
 		}
 
 		this._style.innerHTML = await result.text();
 		Polymer.updateStyles();
+		this.dispatchEvent(new CustomEvent('theme-loaded', {detail: {theme: this.theme}}));
 	}
 }
 
