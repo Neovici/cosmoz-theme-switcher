@@ -63,6 +63,10 @@ class CosmozThemeSwitcher extends Polymer.Element {
 	}
 
 	async import(href) {
+		if (href == null) {
+			return this._style.innerHTML = '';
+		}
+
 		const result = await fetch(href);
 
 		if (!result.ok) {
