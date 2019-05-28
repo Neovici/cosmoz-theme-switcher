@@ -33,25 +33,12 @@
 		<h3>Cosmoz Theme Switcher</h3>
 		<dom-bind id="basic">
 			<template is="dom-bind">
-				<cosmoz-theme-switcher theme-directory="../bower_components/polymer-themes" theme="{{ theme }}" on-theme-loaded="onThemeLoaded" on-theme-error="onThemeError"></cosmoz-theme-switcher>
+				<cosmoz-theme-switcher theme-directory="./themes" theme="{{ theme }}" on-theme-loaded="onThemeLoaded" on-theme-error="onThemeError"></cosmoz-theme-switcher>
 				<paper-dropdown-menu label="Themes">
 					<paper-listbox slot="dropdown-content" class="dropdown-content" attr-for-selected="id" selected="{{ theme }}">
 						<paper-item id="ERROR THEME">ERROR THEME</paper-item>
 						<paper-item id="candy">candy</paper-item>
 						<paper-item id="citric-flames">citric-flames</paper-item>
-						<paper-item id="classical">classical</paper-item>
-						<paper-item id="dark-side">dark-side</paper-item>
-						<paper-item id="denim">denim</paper-item>
-						<paper-item id="everest">everest</paper-item>
-						<paper-item id="gelati">gelati</paper-item>
-						<paper-item id="golden-goose">golden-goose</paper-item>
-						<paper-item id="ice">ice</paper-item>
-						<paper-item id="la-resistance">la-resistance</paper-item>
-						<paper-item id="melon">melon</paper-item>
-						<paper-item id="seven-seas">seven-seas</paper-item>
-						<paper-item id="sky">sky</paper-item>
-						<paper-item id="technology">technology</paper-item>
-						<paper-item id="the-times">the-times</paper-item>
 					</paper-listbox>
 				</paper-dropdown-menu>
 				<paper-button>regular paper-button</paper-button>
@@ -75,7 +62,7 @@
 			basic = !basic.set ? basic.firstElementChild : basic;
 
 			basic.onThemeError = (event, detail) => {
-				addResult('theme error: ' + detail.theme);
+				addResult('theme error: ' + detail.theme + ' ' + detail.error);
 			};
 
 			basic.onThemeLoaded = (event, detail) => {

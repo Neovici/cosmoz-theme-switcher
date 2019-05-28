@@ -1,16 +1,9 @@
-<link rel="import" href="../../../polymer/polymer.html">
+<link rel="import" href="/components/polymer/polymer-element.html">
 
-<dom-module id="x-foo">
-	<template>
-		<paper-button>paper-button in x-foo local dom</paper-button>
-	</template>
-	<script type="text/javascript">
-		(function () {
-			'use strict';
-
-			Polymer({
-				is: 'x-foo'
-			});
-		}());
-	</script>
-</dom-module>
+<script type="text/javascript">
+customElements.define('x-foo', class extends Polymer.Element {
+	static get template() {
+		return '<paper-button>paper-button in x-foo local dom</paper-button>';
+	}
+});
+</script>

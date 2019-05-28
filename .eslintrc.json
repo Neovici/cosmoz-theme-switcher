@@ -12,7 +12,7 @@
 		"WeakMap": false
 	},
 	"parserOptions": {
-		"ecmaVersion": 6
+		"ecmaVersion": 8
 	},
 	"plugins": [
 		"html"
@@ -39,7 +39,7 @@
 			"error",
 			"all"
 		],
-		"eqeqeq": "error",
+		"eqeqeq": ["error", "smart"],
 		"guard-for-in": "error",
 		"indent": [
 			"error",
