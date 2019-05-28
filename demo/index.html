@@ -62,7 +62,7 @@
 			basic = !basic.set ? basic.firstElementChild : basic;
 
 			basic.onThemeError = (event, detail) => {
-				addResult('theme error: ' + detail.theme);
+				addResult('theme error: ' + detail.theme + ' ' + detail.error);
 			};
 
 			basic.onThemeLoaded = (event, detail) => {
